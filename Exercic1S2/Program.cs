@@ -1,27 +1,30 @@
 ﻿using System;
 
-namespace Exercic1S2
+namespace Exercice2S2
 {
     class Program
     {
-        static char reponse;
-        static void saisiePrix()
+
+        static char saisiePrix()
         {
+            char answer;
             do
             {
                 Console.WriteLine();
                 Console.Write("Avez vous un prix à saisir? [O/N] ");
-                reponse = Console.ReadKey().KeyChar;
-            } while (reponse != 'O' && reponse != 'N');
+                answer = Console.ReadKey().KeyChar;
+            } while (answer != 'O' && answer != 'N');
+            return answer;
         }
         static void Main(string[] args)
         {
-            float prix , total = 0;
+            float prix, total = 0;
+            char reponse;
             string devise;
 
             Console.Write("Quelle est la devise utilisée : ");
             devise = Console.ReadLine();
-            saisiePrix();
+            reponse = saisiePrix();
 
             while (reponse == 'O')
             {
@@ -29,7 +32,7 @@ namespace Exercic1S2
                 Console.Write("Entrez un prix: ");
                 prix = float.Parse(Console.ReadLine());
                 total += prix;
-                saisiePrix();
+                reponse = saisiePrix();
             }
 
             Console.WriteLine();
