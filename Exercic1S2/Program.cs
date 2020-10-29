@@ -4,14 +4,20 @@ namespace Exercice2S2
 {
     class Program
     {
-
-        static char saisiePrix()
+        /// <summary>
+        /// Saisie d'un choix parmis 2 possibilités, avec contrôle de saisie
+        /// </summary>
+        /// <param name="message">Le message à afficher</param>
+        /// <param name="choix1">Le premier choix disponible</param>
+        /// <param name="choix2">Le deuxième choix disponible</param>
+        /// <returns>Le choix de l'utilisateur</returns>
+        static char saisie(string message, char choix1, char choix2)
         {
             char answer;
             do
             {
                 Console.WriteLine();
-                Console.Write("Avez vous un prix à saisir? [O/N] ");
+                Console.Write(message + " [" + choix1 + "/" + choix2 + "] : ");
                 answer = Console.ReadKey().KeyChar;
             } while (answer != 'O' && answer != 'N');
             return answer;
@@ -24,7 +30,7 @@ namespace Exercice2S2
 
             Console.Write("Quelle est la devise utilisée : ");
             devise = Console.ReadLine();
-            reponse = saisiePrix();
+            reponse = saisie("Avez vous un prix à saisir ?",'O','N');
 
             while (reponse == 'O')
             {
@@ -32,7 +38,7 @@ namespace Exercice2S2
                 Console.Write("Entrez un prix: ");
                 prix = float.Parse(Console.ReadLine());
                 total += prix;
-                reponse = saisiePrix();
+                reponse = saisie("Avez vous un prix à saisir ?", 'O', 'N');
             }
 
             Console.WriteLine();
